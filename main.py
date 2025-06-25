@@ -32,7 +32,7 @@ class TASKS:
         print('\n[YOUR TASKS]')
         stream = open(self.nazwa_pliku)
         if len(stream.read()) < 1:
-            print('Empty list\n')
+            print('Lista zadań jest pusta\n')
             stream.close()
         else:
             stream.seek(0)
