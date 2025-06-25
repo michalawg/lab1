@@ -39,3 +39,14 @@ Rozwiązywanie konfliktów:
 - Połączenie feature/header-design-a z main przebiegło bez problemu
 - Podczas łączenia feature/header-design-b wystąpił konflikt w pliku index.html
 - Konflikt został ręcznie rozwiązany poprzez połączenie obu wersji nagłówków
+
+# Lab2 Zad4
+- Dodano nowy plik calculator.py z klasą Calculator
+- Napisano testy jednostkowe dla funkcji dodawania, odejmowania, mnożenia, dzielenia i dzielenia przez zero
+- Uzyskano 100% pokrycia testami
+- Dodano testy integracyjne (osobne testy potwierdzające działanie pełnego kalkulatora)
+
+# Lab2 Zad5
+Utworzono gałąź kalkulator-funkcja
+Zaimplementowano metodę power(a, b) z testem
+Utworzono pull request i wykonano code review
