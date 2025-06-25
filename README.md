@@ -1,4 +1,4 @@
-# lab1
+# Lab1
 
 # Aplikacja To-Do List (Python CLI)
 
