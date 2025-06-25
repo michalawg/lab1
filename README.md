@@ -24,7 +24,7 @@ Pozwala dodawać zadania, wyświetlać listę oraz oznaczać zadania jako wykona
 
 Sklonuj repozytorium:
 
-```bash
+bash
 git clone https://github.com/michalawg/lab1.git
 cd lab1
 
