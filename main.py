@@ -1,5 +1,6 @@
 import os, uuid
 
+print("Witaja w aplikacji To-Do")
 
 def main():
     while True:
