@@ -21,3 +21,7 @@ def test_dzielenie_przez_zero():
     calc = Calculator()
     with pytest.raises(ZeroDivisionError):
         calc.divide(5, 0)
+
+def test_potegowanie():
+    calc = Calculator()
+    assert calc.power(2, 3) == 8
