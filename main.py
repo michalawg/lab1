@@ -51,6 +51,7 @@ class TASKS:
                 # my_file.seek(0)
                 # print(my_file.readlines())
             print()
+            print("Zadanie zostało dodane pomyślnie.\n")
 
         except Exception as e:
             print('error occurred: ', e)
