@@ -20,7 +20,7 @@ Pozwala dodawać zadania, wyświetlać listę oraz oznaczać zadania jako wykona
 [3] complete task
 [4] exit
 
-## Instalacja
+# Instalacja
 
 1. Sklonuj repozytorium:
 
@@ -33,7 +33,7 @@ Projekt dostępny na licencji MIT – szczegóły w pliku LICENSE
 
 
 
-## Lab2 Zad2
+# Lab2 Zad2
 Rozwiązywanie konfliktów:
 - Utworzono 2 gałęzie z różnymi nagłówkami: feature/header-design-a, feature/header-design-b
 - Połączenie feature/header-design-a z main przebiegło bez problemu
