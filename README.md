@@ -30,3 +30,12 @@ cd lab1
 
 # Licencja
 Projekt dostępny na licencji MIT – szczegóły w pliku LICENSE
+
+
+
+## Lab2 Zad2
+Rozwiązywanie konfliktów:
+- Utworzono 2 gałęzie z różnymi nagłówkami: feature/header-design-a, feature/header-design-b
+- Połączenie feature/header-design-a z main przebiegło bez problemu
+- Podczas łączenia feature/header-design-b wystąpił konflikt w pliku index.html
+- Konflikt został ręcznie rozwiązany poprzez połączenie obu wersji nagłówków
