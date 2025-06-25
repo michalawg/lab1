@@ -39,3 +39,13 @@ Rozwiązywanie konfliktów:
 - Połączenie feature/header-design-a z main przebiegło bez problemu
 - Podczas łączenia feature/header-design-b wystąpił konflikt w pliku index.html
 - Konflikt został ręcznie rozwiązany poprzez połączenie obu wersji nagłówków
+
+Zad4-5
+Dodano klasę `Calculator` z metodami:
+
+- `add(a, b)` – dodawanie
+- `subtract(a, b)` – odejmowanie
+- `multiply(a, b)` – mnożenie
+- `divide(a, b)` – dzielenie z obsługą dzielenia przez zero
+
+Kod pokryty testami jednostkowymi z wykorzystaniem `Pytest` zgodnie z metodyką TDD.
