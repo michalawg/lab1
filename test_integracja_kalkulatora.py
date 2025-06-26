@@ -1,5 +1,6 @@
 from calculator import Calculator
 
+
 def test_zlozone_dzialanie():
     calc = Calculator()
 
