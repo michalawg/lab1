@@ -1,19 +1,16 @@
 # Lab1
 
 # Aplikacja To-Do List (Python CLI)
-
 Prosta aplikacja konsolowa do zarządzania zadaniami.  
 Pozwala dodawać zadania, wyświetlać listę oraz oznaczać zadania jako wykonane.
 
 ## Funkcje
-
 - Dodawanie nowych zadań z terminem
 - Wyświetlanie wszystkich zadań
 - Oznaczanie zadania jako zakończone (po ID)
-- Dane zapisywane lokalnie w pliku `xwaz.txt`
+- Dane zapisywane lokalnie w pliku 'xwaz.txt'
 
 ## Przykład działania
-
 == TODO LIST ==
 [1] show tasks
 [2] add task
@@ -21,7 +18,6 @@ Pozwala dodawać zadania, wyświetlać listę oraz oznaczać zadania jako wykona
 [4] exit
 
 # Instalacja
-
 Sklonuj repozytorium:
 
 bash
@@ -31,14 +27,22 @@ cd lab1
 # Licencja
 Projekt dostępny na licencji MIT – szczegóły w pliku LICENSE
 
-
-
 # Lab2 Zad2
 Rozwiązywanie konfliktów:
 - Utworzono 2 gałęzie z różnymi nagłówkami: feature/header-design-a, feature/header-design-b
 - Połączenie feature/header-design-a z main przebiegło bez problemu
 - Podczas łączenia feature/header-design-b wystąpił konflikt w pliku index.html
 - Konflikt został ręcznie rozwiązany poprzez połączenie obu wersji nagłówków
+
+# Lab2 Zad4-5
+Dodano klasę `Calculator` z metodami:
+
+- add(a, b) – dodawanie
+- subtract(a, b) – odejmowanie
+- multiply(a, b) – mnożenie
+- divide(a, b) – dzielenie z obsługą dzielenia przez zero
+
+Kod pokryty testami jednostkowymi z wykorzystaniem Pytest zgodnie z metodyką TDD.
 
 # Lab2 Zad4
 - Dodano nowy plik calculator.py z klasą Calculator
@@ -50,3 +54,4 @@ Rozwiązywanie konfliktów:
 Utworzono gałąź kalkulator-funkcja
 Zaimplementowano metodę power(a, b) z testem
 Utworzono pull request i wykonano code review
+
