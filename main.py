@@ -1,6 +1,8 @@
-import os, uuid
+import os
+import uuid
 
 print("Witaja w aplikacji To-Do")
+
 
 def main():
     while True:
@@ -78,32 +80,3 @@ class TASKS:
 
 nowe = TASKS('xwaz.txt')
 main()
-
-
-
-
-
-
-
-
-
-
-    # def jesli_plk_nie_istnieje(self):
-    #     if not os.path.exists(self.nazwa_pliku):
-    #         nowy = open(self.nazwa_pliku, 'w')
-    #         nowy.close()
-
-
-
-
-
-# zadania1 = zadania()
-# zadania1.doesnt_exist()
-
-# import uuid
-# print('[ADD TASK]')
-# task_name = input('What is the task? ').strip()
-# deadline = input('What is the deadline? ').strip()
-# new_id = str(uuid.uuid4())
-# x = [new_id, task_name, deadline]
-# print(' | '.join(x))
