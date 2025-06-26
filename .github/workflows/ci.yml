@@ -23,6 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
 
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Lint code with flake8
+        run: flake8 .
+
       - name: Run tests
-        run: |
-          pytest
+        run: pytest
+
+      - name: Build Docker image
+        run: docker build -t myapp:latest .
