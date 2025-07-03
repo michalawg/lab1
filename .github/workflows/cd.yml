@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -23,43 +23,28 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Backup current Docker image
+      run: |
+        docker tag myapp:latest myapp:previous || true
+
+    - name: Stop and remove previous container
+      run: |
+        docker stop myapp || true
+        docker rm myapp || true
+
     - name: Build Docker image
       run: docker build -t myapp:latest .
 
-    - name: Copy Docker image to remote (optional)
-      if: false
-      run: echo "Można dodać docker save + scp, ale w tym przykładzie używamy tylko ssh"
-
-    - name: Deploy to remote server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        port: ${{ secrets.SSH_PORT }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          docker stop myapp || true
-          docker rm myapp || true
-          docker rmi myapp:latest || true
-          cd ~/app  # załóżmy, że repo było wcześniej sklonowane na serwerze
-          git pull origin main
-          docker build -t myapp:latest .
-          docker run -d --name myapp -p 80:80 myapp:latest
+    - name: Run container
+      run: docker run -d --name myapp -p 80:80 myapp:latest
 
     - name: Health check
-      run: |
-        curl --fail http://${{ secrets.SSH_HOST }}/ || exit 1
+      run: echo "Brak health checka – aplikacja nie ma serwera HTTP"
 
     - name: Rollback if deploy fails
       if: failure()
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        port: ${{ secrets.SSH_PORT }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          echo "Wystąpił błąd. Uruchamiam rollback"
-          docker stop myapp || true
-          docker rm myapp || true
-          docker run -d --name myapp -p 80:80 myapp:previous
+      run: |
+        echo "Wystąpił błąd — przywracam poprzednią wersję"
+        docker stop myapp || true
+        docker rm myapp || true
+        docker run -it --rm --name myapp myapp:previous
