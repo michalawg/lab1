@@ -31,7 +31,7 @@ jobs:
       run: echo "Można dodać docker save + scp, ale w tym przykładzie używamy tylko ssh"
 
     - name: Deploy to remote server
-      uses: appleboy/ssh-action@v1.0.3
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
@@ -52,7 +52,7 @@ jobs:
 
     - name: Rollback if deploy fails
       if: failure()
-      uses: appleboy/ssh-action@v1.0.3
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
