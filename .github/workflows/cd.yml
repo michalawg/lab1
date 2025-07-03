@@ -27,13 +27,14 @@ jobs:
       run: docker build -t myapp:latest .
 
     - name: Copy Docker image to remote (optional)
-      if: false  # tylko jeśli nie używasz remote builda
+      if: false
       run: echo "Można dodać docker save + scp, ale w tym przykładzie używamy tylko ssh"
 
     - name: Deploy to remote server
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
