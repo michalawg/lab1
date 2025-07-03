@@ -85,6 +85,11 @@ Plik: .github/workflows/cd.yml
 - Uruchamia się po push na main
 - Wdraża aplikację na zdalnym serwerze
 
+## Deployment (CI/CD)
+Repozytorium zawiera:
+- CI (testy, budowanie obrazu)
+- CD (wdrożenie na maszynie zdalnej po pushu do main, rollback i healthcheck)
+
 # Konfiguracja środowiska
 - Runner działa na systemie Ubuntu 20.04
 - Docker musi być zainstalowany
