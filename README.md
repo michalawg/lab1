@@ -22,7 +22,6 @@ Sklonuj repozytorium:
 
 bash
 git clone https://github.com/michalawg/laboratoria-git
-cd lab1
 
 # Licencja
 Projekt dostępny na licencji MIT – szczegóły w pliku LICENSE
