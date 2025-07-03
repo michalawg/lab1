@@ -55,3 +55,4 @@ Utworzono gałąź kalkulator-funkcja
 Zaimplementowano metodę power(a, b) z testem
 Utworzono pull request i wykonano code review
 
+"# Test commit" 
