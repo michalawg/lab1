@@ -10,21 +10,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Build Docker image
-        run: docker build -t myapp:latest .
+    - name: Build Docker image
+      run: docker build -t myapp:latest .
 
-      - name: Deploy (placeholder step)
-        run: echo "Tutaj nastąpi wdrożenie na serwer docelowy"
+    - name: Copy Docker image to remote (optional)
+      if: false  # tylko jeśli nie używasz remote builda
+      run: echo "Można dodać docker save + scp, ale w tym przykładzie używamy tylko ssh"
+
+    - name: Deploy to remote server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          docker stop myapp || true
+          docker rm myapp || true
+          docker rmi myapp:latest || true
+          cd ~/app  # załóżmy, że repo było wcześniej sklonowane na serwerze
+          git pull origin main
+          docker build -t myapp:latest .
+          docker run -d --name myapp -p 80:80 myapp:latest
+
+    - name: Health check
+      run: |
+        curl --fail http://${{ secrets.SSH_HOST }}/ || exit 1
+
+    - name: Rollback if deploy fails
+      if: failure()
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "Wystąpił błąd. Uruchamiam rollback"
+          docker stop myapp || true
+          docker rm myapp || true
+          docker run -d --name myapp -p 80:80 myapp:previous
